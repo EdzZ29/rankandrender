@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections";
 import { WorkGrid } from "@/components/WorkGrid";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Our Work",
-  description: "Selected Rank & Render project experience across education, construction, hospitality and more.",
-};
+  description:
+    "Selected Rank & Render project experience across education, construction, hospitality and more.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (

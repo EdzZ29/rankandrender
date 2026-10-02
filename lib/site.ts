@@ -1,6 +1,6 @@
 export const site = {
   name: "Rank & Render",
-  url: "https://rankandrender.com",
+  url: "https://www.rankandrender.com",
   tagline: "Digital growth systems for businesses ready to build, improve and grow online.",
   email: "hello@rankandrender.com",
   phone: "+61 2 8000 0000",

@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import { RevealObserver } from "@/components/RevealObserver";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -24,17 +27,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Rank & Render | Digital Growth Studio",
+    default: "Rank & Render | Web Design, SEO & AI Automation Studio",
     template: "%s | Rank & Render",
   },
   description:
     "Rank & Render builds digital growth systems: high-performance websites, SEO, AI automation, apps and social media that help businesses get found, win customers and grow.",
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "business",
+  formatDetection: { telephone: false },
+  robots: { index: true, follow: true, googleBot: { "max-image-preview": "large", "max-snippet": -1 } },
+  // Set GOOGLE_SITE_VERIFICATION in Vercel if verifying Search Console via HTML tag.
+  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   openGraph: {
     type: "website",
     siteName: site.name,
+    locale: "en_AU",
     title: "Rank & Render | Digital Growth Studio",
     description: "Your business deserves more than just a website.",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
@@ -62,6 +76,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <RevealObserver />
+        <Analytics />
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
       </body>
     </html>
   );

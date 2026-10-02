@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Check, X } from "lucide-react";
 import { afterList, beforeList, faqs, problems, services } from "@/lib/content";
@@ -12,6 +13,18 @@ import { Faq } from "@/components/Faq";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CtaBand } from "@/components/CtaBand";
 import { Comparison, ProcessSection, ReasonsGrid } from "@/components/sections";
+import { JsonLd } from "@/components/JsonLd";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Rank & Render | Web Design, SEO & AI Automation Studio",
+    description:
+      "Rank & Render builds digital growth systems: high-performance websites, SEO, AI automation, apps and social media that help businesses get found, win customers and grow.",
+    path: "/",
+  }),
+  title: { absolute: "Rank & Render | Web Design, SEO & AI Automation Studio" },
+};
 
 const marquee = [
   "Websites",
@@ -388,6 +401,7 @@ export default function Home() {
             </div>
           </div>
           <Faq items={faqs} />
+          <JsonLd data={faqJsonLd(faqs)} />
         </div>
       </section>
 

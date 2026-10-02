@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Gauge, Handshake, Layers, MessageSquare, ShieldCheck, Target } from "lucide-react";
 import { Comparison, PageHero, ProcessSection, ReasonsGrid } from "@/components/sections";
 import { SectionTag } from "@/components/ui";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Why Us",
   description:
     "Strategy and execution from one hands-on team. Here’s why businesses choose Rank & Render over bigger agencies.",
-};
+  path: "/why-us",
+});
 
 const commitments = [
   { icon: Target, title: "Clear scope before work starts", text: "You’ll know exactly what we’re building, when, and what it costs before anything begins." },

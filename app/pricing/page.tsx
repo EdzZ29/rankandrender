@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 import { Check, Minus } from "lucide-react";
 import { planMatrix, plans, pricingFaqs } from "@/lib/content";
 import { CheckList, PageHero } from "@/components/sections";
@@ -6,11 +8,12 @@ import { ButtonLink, SectionTag } from "@/components/ui";
 import { Faq } from "@/components/Faq";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Pricing",
   description:
     "Transparent starting points for websites, SEO, automation and full digital growth systems. Every engagement is scoped after a free audit.",
-};
+  path: "/pricing",
+});
 
 const included = [
   "Free digital growth audit",
@@ -158,6 +161,7 @@ export default function PricingPage() {
             <h2 className="display mt-6 text-[clamp(2.25rem,4vw,3.5rem)]">Straight answers about cost.</h2>
           </div>
           <Faq items={pricingFaqs} />
+          <JsonLd data={faqJsonLd(pricingFaqs)} />
         </div>
       </section>
 

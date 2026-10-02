@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { plans, services } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -6,11 +7,12 @@ import { PageHero } from "@/components/sections";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { BookingWidget } from "@/components/contact/BookingWidget";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Request your free digital growth audit or book a free strategy call with Rank & Render. No obligation, no hard sell.",
-};
+  path: "/contact",
+});
 
 const nextSteps = [
   { title: "We review", text: "We look at your website, search visibility, conversion pathways and follow-up process." },

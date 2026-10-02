@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Clock } from "lucide-react";
 import { formatDate, posts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
 import { ButtonLink } from "@/components/ui";
 import { CtaBand } from "@/components/CtaBand";
 
@@ -16,11 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-    openGraph: { type: "article", title: post.title, description: post.excerpt, publishedTime: post.date },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.date,
+  });
 }
 
 export default async function PostPage({ params }: Props) {
@@ -35,6 +40,21 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          articleSection: post.category,
+          url: `${site.url}/blog/${post.slug}`,
+          mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+          image: `${site.url}/opengraph-image`,
+          author: { "@type": "Organization", name: site.name, url: site.url },
+          publisher: { "@type": "Organization", name: site.name, url: site.url, logo: `${site.url}/icon.svg` },
+        }}
+      />
       <article>
         <header className="relative overflow-hidden pb-14 pt-36 sm:pt-44">
           <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_10%,transparent_65%)]" />

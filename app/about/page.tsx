@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Globe, Users, Zap } from "lucide-react";
 import { values } from "@/lib/content";
 import { PageHero } from "@/components/sections";
 import { ButtonLink, SectionTag } from "@/components/ui";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Rank & Render is a digital growth studio helping businesses get found, earn trust and grow, with websites, SEO, automation, apps and social media.",
-};
+  path: "/about",
+});
 
 const howWeWork = [
   { icon: Globe, title: "Remote by design", text: "We work with businesses worldwide, scheduling calls around your time zone and sharing progress in real time." },

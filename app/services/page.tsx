@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { services } from "@/lib/content";
 import { ButtonLink, Chip, SectionTag, TextLink } from "@/components/ui";
 import { CheckList, PageHero } from "@/components/sections";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Website design and development, mobile apps, AI automation, SEO and social media management. One team, one connected growth system.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

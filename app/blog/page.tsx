@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections";
 import { BlogList } from "@/components/BlogList";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog",
   description:
     "Practical, honest guides on websites, SEO, automation, apps and social media, written for business owners.",
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (
