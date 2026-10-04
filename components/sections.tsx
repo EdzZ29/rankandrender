@@ -130,9 +130,9 @@ export function Comparison() {
   );
 }
 
-export function CheckList({ items, dark = false }: { items: string[]; dark?: boolean }) {
+export function CheckList({ items, dark = false, className = "space-y-3" }: { items: string[]; dark?: boolean; className?: string }) {
   return (
-    <ul className="space-y-3">
+    <ul className={className}>
       {items.map((item) => (
         <li key={item} className={`flex items-start gap-3 ${dark ? "text-white/85" : "text-ink/80"}`}>
           <span

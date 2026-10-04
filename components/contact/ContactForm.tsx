@@ -10,7 +10,7 @@ export type ContactDefaults = {
   service?: string;
   industry?: string;
   plan?: string;
-  website?: string;
+  email?: string;
 };
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -92,19 +92,12 @@ export function ContactForm({ defaults }: { defaults: ContactDefaults }) {
         name="email"
         type="email"
         required
-        placeholder="you@business.com"
+        placeholder="yourname@gmail.com"
         autoComplete="email"
+        defaultValue={defaults.email}
         error={errors.email}
       />
       <Field label="Phone" name="phone" type="tel" placeholder="+61 ..." autoComplete="tel" />
-      <Field
-        label="Website URL"
-        name="website"
-        placeholder="https://yourbusiness.com"
-        defaultValue={defaults.website}
-        className="sm:col-span-2"
-        inputMode="url"
-      />
       <Select label="What do you need help with?" name="service" options={serviceOptions} defaultValue={defaults.service} />
       <Select
         label="Industry"

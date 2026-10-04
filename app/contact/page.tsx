@@ -33,7 +33,7 @@ export default async function ContactPage({ searchParams }: Props) {
     service: services.find((s) => s.id === one("service"))?.title,
     plan: plans.find((p) => p.id === one("plan"))?.name,
     industry: one("industry"),
-    website: one("url"),
+    email: one("email"),
   };
 
   return (

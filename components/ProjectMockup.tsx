@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { MockTheme } from "@/lib/projects";
 
 function Pattern({ type, accent }: { type: MockTheme["pattern"]; accent: string }) {
@@ -25,6 +26,18 @@ function Pattern({ type, accent }: { type: MockTheme["pattern"]; accent: string 
         </g>
       </svg>
     );
+  if (type === "fan")
+    return (
+      <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
+        <circle cx="330" cy="80" r="90" fill={accent} fillOpacity="0.06" />
+        <g transform="translate(330 80)" fill="#fff" fillOpacity="0.14">
+          {[0, 120, 240].map((r) => (
+            <path key={r} transform={`rotate(${r})`} d="M0 -8 C 20 -14, 70 -12, 78 0 C 70 12, 20 14, 0 8Z" />
+          ))}
+          <circle r="10" fill={accent} fillOpacity="0.8" />
+        </g>
+      </svg>
+    );
   return (
     <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
       <circle cx="320" cy="50" r="28" fill={accent} fillOpacity="0.7" />
@@ -40,7 +53,41 @@ function Pattern({ type, accent }: { type: MockTheme["pattern"]; accent: string 
   );
 }
 
-export function ProjectMockup({ theme }: { theme: MockTheme }) {
+/** A real screenshot in the same browser frame as the illustrated mockups. */
+function Screenshot({ theme, image, url }: { theme: MockTheme; image: string; url?: string }) {
+  return (
+    <div className="@container relative aspect-[4/3] overflow-hidden rounded-3xl bg-paper-2">
+      <div
+        className="absolute inset-0 opacity-90"
+        style={{ background: `radial-gradient(circle at 80% 0%, ${theme.accent}55, transparent 60%)` }}
+      />
+      <div className="absolute inset-x-[7cqw] bottom-0 top-[13cqw] flex flex-col overflow-hidden rounded-t-[3cqw] bg-white shadow-[0_30px_60px_-30px_rgb(11_17_23/0.5)] transition-transform duration-700 ease-out-expo group-hover:-translate-y-[2cqw]">
+        <div className="flex items-center gap-[1.2cqw] border-b border-ink/5 px-[3cqw] py-[2cqw]">
+          <span className="size-[1.6cqw] rounded-full bg-ink/15" />
+          <span className="size-[1.6cqw] rounded-full bg-ink/15" />
+          <span className="size-[1.6cqw] rounded-full" style={{ background: theme.from }} />
+          {url && (
+            <span className="mx-auto rounded-full bg-paper px-[3cqw] py-[0.6cqw] text-[1.7cqw] text-ink/50">
+              {new URL(url).hostname.replace(/^www\./, "")}
+            </span>
+          )}
+        </div>
+        <div className="relative flex-1">
+          <Image
+            src={image}
+            alt={`${theme.brand} website homepage`}
+            fill
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            className="object-cover object-top"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ProjectMockup({ theme, image, url }: { theme: MockTheme; image?: string; url?: string }) {
+  if (image) return <Screenshot theme={theme} image={image} url={url} />;
   return (
     <div
       aria-hidden

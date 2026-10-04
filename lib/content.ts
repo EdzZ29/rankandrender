@@ -2,6 +2,7 @@ import {
   Bot,
   Briefcase,
   Building2,
+  CalendarCheck,
   ChartLine,
   Compass,
   Cpu,
@@ -15,14 +16,17 @@ import {
   LayoutTemplate,
   Lightbulb,
   Megaphone,
+  MessagesSquare,
   MousePointerClick,
   PhoneMissed,
+  RefreshCw,
   Repeat,
   Rocket,
   Search,
   SearchX,
   ShoppingBag,
   Smartphone,
+  Users,
   UtensilsCrossed,
   Wrench,
   type LucideIcon,
@@ -312,6 +316,64 @@ export const processSteps = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* Process page                                                        */
+/* ------------------------------------------------------------------ */
+
+export const processPillars: { title: string; text: string; icon: LucideIcon }[] = [
+  {
+    title: "Process Management",
+    text: "Every task, milestone and deadline for your project lives in one place, visible to your team and ours, so nothing slips through the cracks.",
+    icon: RefreshCw,
+  },
+  {
+    title: "Communication",
+    text: "We work around your time zone and your tools, so you can talk to the people building your project, share feedback and get answers fast.",
+    icon: MessagesSquare,
+  },
+  {
+    title: "Progress Insights",
+    text: "Regular updates and plain-English reports on what’s done, what’s next and how your site, search rankings and leads are performing.",
+    icon: ChartLine,
+  },
+];
+
+export type TeamRole = {
+  title: string;
+  text: string;
+  icon: LucideIcon;
+  handles: string[];
+};
+
+export const teamRoles: TeamRole[] = [
+  {
+    title: "Digital Growth Strategist",
+    text: "Your lead and the voice of your business across every digital channel: websites, apps, SEO, social and automation.",
+    icon: Compass,
+    handles: ["Audit and growth plan", "Priorities and scope", "Channel strategy", "Results reviews"],
+  },
+  {
+    title: "Project Manager",
+    text: "Your day-to-day contact who keeps the project on track, on time and on budget, and makes sure you always know what’s happening.",
+    icon: CalendarCheck,
+    handles: ["Timelines and milestones", "Weekly updates", "Feedback rounds", "Launch coordination"],
+  },
+  {
+    title: "Dedicated Specialists",
+    text: "Designers, developers, SEO and automation specialists assigned to your project, working directly on your account from start to finish.",
+    icon: Users,
+    handles: ["Design and development", "SEO and content", "Automation setup", "Ongoing support"],
+  },
+];
+
+export const collabTools: { name: string; logo: string; use: string }[] = [
+  { name: "Google Meet", logo: "/tools/google-meet.svg", use: "Strategy calls and reviews" },
+  { name: "Microsoft Teams", logo: "/tools/teams.svg", use: "Meetings for Teams-first clients" },
+  { name: "WhatsApp", logo: "/tools/whatsapp.svg", use: "Quick questions and updates" },
+  { name: "Discord", logo: "/tools/discord.svg", use: "Day-to-day project chat" },
+  { name: "Google Drive", logo: "/tools/google-drive.svg", use: "Files, content and handover" },
+];
+
+/* ------------------------------------------------------------------ */
 /* Comparison + before/after                                           */
 /* ------------------------------------------------------------------ */
 
@@ -372,7 +434,7 @@ export const faqs = [
   },
   {
     q: "How does the free audit work?",
-    a: "Share your website and a little about your business. We review your site, search visibility, conversion pathways and follow-up process, then send a clear summary of the gaps and opportunities with recommended next steps. There’s no obligation.",
+    a: "Tell us a little about your business and what you need, whether that’s a brand-new website or help with the one you have. We review your online presence, search visibility, conversion pathways and follow-up process, then send a clear summary of the gaps and opportunities with recommended next steps. There’s no obligation.",
   },
   {
     q: "How do we get started?",

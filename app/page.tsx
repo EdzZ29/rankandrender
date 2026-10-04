@@ -305,19 +305,28 @@ export default function Home() {
             <div>
               <SectionTag n="06" label="Our work" />
               <h2 data-reveal className="display mt-6 max-w-3xl text-[clamp(2.5rem,5.5vw,4.5rem)]">
-                Different industries. Same standard.
+                Real businesses. Live online.
               </h2>
               <p data-reveal className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-                Selected project experience across different industries and markets.
+                A few of the websites we’ve designed, built and launched, with many more live online today. Click
+                through to see them live.
               </p>
             </div>
-            <TextLink href="/work">View all projects</TextLink>
+            {projects.length > 3 && <TextLink href="/work">View all projects</TextLink>}
           </div>
-          <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {projects.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} delay={i * 90} />
-            ))}
-          </div>
+          {projects.length === 1 ? (
+            <div className="mt-14">
+              <ProjectCard project={projects[0]} featured />
+            </div>
+          ) : (
+            <div
+              className={`mt-14 grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-8 ${projects.length > 2 ? "lg:grid-cols-3" : ""}`}
+            >
+              {projects.slice(0, 3).map((p, i) => (
+                <ProjectCard key={p.slug} project={p} delay={i * 90} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

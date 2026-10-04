@@ -2,7 +2,7 @@ export const site = {
   name: "Rank & Render",
   url: "https://www.rankandrender.com",
   tagline: "Digital growth systems for businesses ready to build, improve and grow online.",
-  email: "hello@rankandrender.com",
+  email: "contact@rankandrender.com",
   phone: "+61 2 8000 0000",
   phoneHref: "tel:+61280000000",
   location: "Working with businesses worldwide",
@@ -16,6 +16,7 @@ export const site = {
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/process", label: "Process" },
   { href: "/work", label: "Our Work" },
   { href: "/why-us", label: "Why Us" },
   { href: "/pricing", label: "Pricing" },

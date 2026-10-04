@@ -6,7 +6,7 @@ export type MockTheme = {
   from: string;
   to: string;
   accent: string;
-  pattern: "road" | "blueprint" | "waves";
+  pattern: "road" | "blueprint" | "waves" | "fan";
 };
 
 export type Project = {
@@ -15,6 +15,10 @@ export type Project = {
   industry: string;
   category: string;
   summary: string;
+  /** Live site, for real client work. */
+  url?: string;
+  /** Screenshot of the live site in /public, shown in place of the illustrated mockup. */
+  image?: string;
   tags: string[];
   theme: MockTheme;
   challenge: string;
@@ -25,114 +29,123 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "driving-school",
-    title: "Driving School",
-    industry: "Education",
-    category: "Website / Digital Experience",
+    slug: "fan-cleaners",
+    title: "Fan Cleaners",
+    industry: "Service Businesses",
+    category: "Website / Lead Generation",
     summary:
-      "A modern website and digital experience for a driving school. Clear lesson pathways, a simple booking flow and a mobile-first journey built around how learners actually search and enrol.",
-    tags: ["Website Design", "Development"],
+      "A fast, conversion-focused website for a Darwin ceiling fan cleaning business. Fixed pricing up front, a 30-second price check and clear booking pathways that turn local searches into booked jobs.",
+    url: "https://fancleaners.com",
+    image: "/work/fan-cleaners.png",
+    tags: ["Website Design", "Development", "Local SEO"],
     theme: {
-      brand: "SteerClear",
-      headline: "Pass with confidence.",
-      sub: "Lessons, packages and test prep, booked in minutes.",
-      cta: "Book a lesson",
-      from: "#0c2340",
-      to: "#1e4fa8",
-      accent: "#facc15",
-      pattern: "road",
+      brand: "Fan Cleaners",
+      headline: "Filthy ceiling fans? We clean them.",
+      sub: "Up to 5 fans cleaned from $189 fixed. Done in under an hour.",
+      cta: "Book my fan clean",
+      from: "#1f4d08",
+      to: "#3f9a0e",
+      accent: "#bef264",
+      pattern: "fan",
     },
     challenge:
-      "Learners and parents compare driving schools on their phones, often late at night. The old site buried lesson prices and made booking a phone-call-only process, so enquiries quietly leaked to competitors with simpler journeys.",
+      "Fan cleaning is a job people put off, then want sorted fast. Homeowners needed to know what it costs, whether the business covers their suburb and how easy it is to book, before they’d pick up the phone.",
     approach: [
-      "Mapped the questions learners ask before booking: price, availability, instructor and test preparation.",
-      "Designed package pages that compare options at a glance, with the most popular choice highlighted.",
-      "Built a three-step booking request that works comfortably with one thumb.",
-      "Set up local SEO foundations so the school appears for suburb-level searches.",
+      "Led with the price: a fixed $189 for up to five fans, with clear tiers for larger homes and extra exhaust fans.",
+      "Built a 30-second price check so visitors can see their price without waiting for a quote.",
+      "Packaged a twice-yearly plan that rewards repeat customers and smooths out bookings.",
+      "Created service and service-area pages for Darwin, Palmerston, Litchfield and the rural region.",
+      "Put trust front and centre: fully insured, a re-clean guarantee and real before-and-after photos.",
     ],
     built: [
       "Mobile-first website",
-      "Lesson package comparison",
-      "Booking request flow",
-      "Instructor profiles",
-      "Local SEO foundations",
-      "Enquiry tracking",
+      "30-second price checker",
+      "Quote and booking forms",
+      "Twice-yearly plan page",
+      "Service and area pages",
+      "Before and after showcase",
     ],
     outcome:
-      "A site that answers the big questions upfront and turns late-night browsing into booking requests, without the back-and-forth of phone tag.",
+      "A site that answers price, coverage and trust in the first scroll, so locals can go from searching to booking a fan clean in a couple of taps.",
   },
   {
-    slug: "building-company",
-    title: "Building Company",
-    industry: "Construction",
-    category: "Website / Digital Presence",
+    slug: "tower-sealants",
+    title: "Tower Sealants",
+    industry: "Manufacturing",
+    category: "Website / Product Catalogue",
     summary:
-      "A complete digital presence for a building company. Project showcases, service pages and an enquiry experience designed to match the standard of their work on site.",
-    tags: ["Website Design", "Development"],
+      "A bold, product-led website for a caulk and sealant manufacturer serving professional painters and contractors. A clear product catalogue, a dealer locator and online buying, all in one place.",
+    url: "https://www.towersealants.com",
+    image: "/work/tower-sealants.png",
+    tags: ["Website Design", "Development", "E-Commerce"],
     theme: {
-      brand: "Northline Build",
-      headline: "Built properly. Built to last.",
-      sub: "Custom homes, renovations and extensions.",
-      cta: "Request a quote",
-      from: "#1c1917",
-      to: "#3a332d",
-      accent: "#f59e0b",
+      brand: "Tower Sealants",
+      headline: "Latest innovations in caulks and sealants.",
+      sub: "Unmatched service and quality since 2006.",
+      cta: "Shop products",
+      from: "#111111",
+      to: "#2b2b2b",
+      accent: "#d7192d",
       pattern: "blueprint",
     },
     challenge:
-      "Their craftsmanship was excellent, but their online presence said otherwise. Past projects lived in a disorganised gallery and quote requests arrived with almost no detail, wasting time on both sides.",
+      "Tower Sealants sells to busy professionals who need the right product, its technical data and somewhere to buy it, fast. With a growing range, multiple offices and both dealer and direct sales, the site had to make every one of those paths obvious.",
     approach: [
-      "Turned past builds into structured case studies with scope, timeline and finish details.",
-      "Wrote service pages for each type of work so the right clients self-select.",
-      "Designed a guided quote form that captures budget, location and timeframe before the first call.",
-      "Optimised the Google Business Profile with fresh project photos and service areas.",
+      "Organised the range into a product catalogue with solutions grouped by job, so painters find the right sealant quickly.",
+      "Put “Local Dealer” and “Buy Online” in the header on every page, so there’s always a next step.",
+      "Gathered technical, safety and architect data sheets into a resources hub contractors can rely on.",
+      "Added practical tools, including a usage calculator and compatibility guide, plus a wholesale pathway for trade accounts.",
+      "Kept the brand bold and industrial, with English and Spanish language options.",
     ],
     built: [
-      "Project case study system",
-      "Service and location pages",
-      "Guided quote request form",
-      "Google Business optimisation",
-      "Before and after galleries",
-      "Fast image delivery",
+      "Product catalogue",
+      "Dealer locator",
+      "Online buying pathway",
+      "Data sheet resource hub",
+      "Usage calculator and compatibility guide",
+      "Wholesale enquiries",
     ],
     outcome:
-      "A presence that finally reflects the quality of the work, with better-qualified enquiries arriving ready for a real conversation.",
+      "A site that works as hard as the products: professionals can research, compare and buy, or find a local dealer, in a few clicks.",
   },
   {
-    slug: "boat-charter",
-    title: "Boat Charter Business",
-    industry: "Hospitality & Tourism",
-    category: "Website / Conversion Experience",
+    slug: "localised-seo",
+    title: "LocalisedSEO",
+    industry: "Professional Services",
+    category: "Website / Agency Lead Generation",
     summary:
-      "A conversion-focused website for a boat charter business. Immersive visuals, clear package pathways and calls-to-action built to turn browsers into bookings.",
-    tags: ["Website Design", "Conversion Optimisation"],
+      "A confident, editorial website for a digital marketing agency in Oxnard, California. Clear services, industry pages and pricing, with “Book a call” always one click away.",
+    url: "https://localisedseo.com",
+    image: "/work/localised-seo.png",
+    tags: ["Website Design", "Development", "Local SEO"],
     theme: {
-      brand: "Bluewater Charters",
-      headline: "Your day on the water starts here.",
-      sub: "Private charters, reef tours and sunset cruises.",
-      cta: "Check availability",
-      from: "#053b4f",
-      to: "#0a8aa8",
-      accent: "#ff8a5c",
+      brand: "LocalisedSEO",
+      headline: "Digital marketing built to help local businesses grow.",
+      sub: "Weed out the competition and rank high.",
+      cta: "Book a call",
+      from: "#2e1a6b",
+      to: "#6a3fe0",
+      accent: "#c4b5fd",
       pattern: "waves",
     },
     challenge:
-      "Visitors loved the photos but struggled to choose between trips, and most bookings went through third-party platforms that took a significant cut of every sale.",
+      "Local business owners are wary of marketing agencies. LocalisedSEO needed a site that felt personal and trustworthy, showed exactly what they do and who they work with, and turned that trust into booked calls.",
     approach: [
-      "Grouped trips into clear packages by occasion: private groups, reef adventures and sunset cruises.",
-      "Placed availability and pricing next to every package so there’s no hunting.",
-      "Added persistent booking calls-to-action on mobile without cluttering the visuals.",
-      "Built trust with reviews, safety information and a clear what-to-bring guide.",
+      "Built a distinctive editorial look with a strong headline and a clear, local positioning for Oxnard, Ventura County and Southern California.",
+      "Gave each service its own page, from SEO and web design to PPC, social media and reputation management.",
+      "Created “Who We Work With” pages for 18+ industries, so visitors see their own business reflected.",
+      "Added transparent pricing and a results section with websites built and testimonials.",
+      "Kept “Book a call” and a free audit offer prominent on every page, alongside account and checkout pages for purchasing services online.",
     ],
     built: [
-      "Immersive visual website",
-      "Package comparison pages",
-      "Direct booking pathways",
-      "Mobile sticky calls-to-action",
-      "Reviews and trust sections",
-      "Conversion tracking",
+      "Editorial website design",
+      "Service pages",
+      "Industry landing pages",
+      "Pricing and checkout",
+      "Results and testimonials",
+      "Book-a-call pathways",
     ],
     outcome:
-      "A website that sells the experience and makes booking direct the easiest option, reducing reliance on third-party platforms.",
+      "A site that explains the agency in seconds, speaks directly to each type of local business and gives every visitor a clear next step: book a call.",
   },
 ];

@@ -49,6 +49,11 @@ export default async function ProjectPage({ params }: Props) {
                   <Chip key={t}>{t}</Chip>
                 ))}
               </div>
+              {project.url && (
+                <ButtonLink href={project.url} target="_blank" rel="noopener noreferrer" className="mt-7">
+                  Visit {new URL(project.url).hostname.replace(/^www\./, "")}
+                </ButtonLink>
+              )}
             </div>
           </div>
         </div>
@@ -56,7 +61,13 @@ export default async function ProjectPage({ params }: Props) {
 
       <div className="container-x">
         <div data-reveal className="mx-auto max-w-5xl">
-          <ProjectMockup theme={project.theme} />
+          {project.url ? (
+            <a href={project.url} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Visit the live ${project.title} website`}>
+              <ProjectMockup theme={project.theme} image={project.image} url={project.url} />
+            </a>
+          ) : (
+            <ProjectMockup theme={project.theme} />
+          )}
         </div>
       </div>
 
@@ -97,21 +108,23 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-t border-ink/10">
-        <Link href={`/work/${next.slug}`} className="group block">
-          <div className="container-x flex items-center justify-between gap-6 py-14">
-            <div>
-              <p className="eyebrow text-muted">Next project</p>
-              <p className="display mt-3 text-[clamp(2rem,5vw,4rem)] transition-colors group-hover:text-brand">
-                {next.title}
-              </p>
+      {next.slug !== project.slug && (
+        <section className="border-t border-ink/10">
+          <Link href={`/work/${next.slug}`} className="group block">
+            <div className="container-x flex items-center justify-between gap-6 py-14">
+              <div>
+                <p className="eyebrow text-muted">Next project</p>
+                <p className="display mt-3 text-[clamp(2rem,5vw,4rem)] transition-colors group-hover:text-brand">
+                  {next.title}
+                </p>
+              </div>
+              <span className="grid size-16 shrink-0 place-items-center rounded-full bg-ink text-white transition-all duration-500 group-hover:rotate-45 group-hover:bg-brand sm:size-20">
+                <ArrowUpRight className="size-7" />
+              </span>
             </div>
-            <span className="grid size-16 shrink-0 place-items-center rounded-full bg-ink text-white transition-all duration-500 group-hover:rotate-45 group-hover:bg-brand sm:size-20">
-              <ArrowUpRight className="size-7" />
-            </span>
-          </div>
-        </Link>
-      </section>
+          </Link>
+        </section>
+      )}
 
       <CtaBand />
     </>
